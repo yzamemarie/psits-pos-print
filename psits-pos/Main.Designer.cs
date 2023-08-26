@@ -333,7 +333,7 @@
             // 
             this.invoiceDate_lbl.AutoSize = true;
             this.invoiceDate_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.invoiceDate_lbl.Location = new System.Drawing.Point(406, 19);
+            this.invoiceDate_lbl.Location = new System.Drawing.Point(388, 19);
             this.invoiceDate_lbl.Name = "invoiceDate_lbl";
             this.invoiceDate_lbl.Size = new System.Drawing.Size(42, 17);
             this.invoiceDate_lbl.TabIndex = 4;
@@ -341,7 +341,7 @@
             // 
             // invoiceDate_dtp
             // 
-            this.invoiceDate_dtp.Location = new System.Drawing.Point(454, 16);
+            this.invoiceDate_dtp.Location = new System.Drawing.Point(436, 16);
             this.invoiceDate_dtp.Name = "invoiceDate_dtp";
             this.invoiceDate_dtp.Size = new System.Drawing.Size(200, 23);
             this.invoiceDate_dtp.TabIndex = 5;
