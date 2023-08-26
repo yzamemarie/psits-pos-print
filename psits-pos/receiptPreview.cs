@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace psits_pos
 {
-    public partial class merchSelection : Form
+    public partial class receiptPreview : Form
     {
-        public merchSelection()
+        public receiptPreview()
         {
             InitializeComponent();
         }

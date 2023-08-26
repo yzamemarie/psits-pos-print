@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.studInfo_groupbox = new System.Windows.Forms.GroupBox();
-            this.studType_check = new System.Windows.Forms.CheckBox();
+            this.officer_check = new System.Windows.Forms.CheckBox();
             this.studYear_cb = new System.Windows.Forms.ComboBox();
             this.studYear_lbl = new System.Windows.Forms.Label();
             this.studCourse_cb = new System.Windows.Forms.ComboBox();
@@ -41,6 +39,14 @@
             this.studFN_txt = new System.Windows.Forms.TextBox();
             this.studFN_lbl = new System.Windows.Forms.Label();
             this.invoiceBox_groupbox = new System.Windows.Forms.GroupBox();
+            this.totebag2_check = new System.Windows.Forms.CheckBox();
+            this.totebag1_check = new System.Windows.Forms.CheckBox();
+            this.hoodieWhite_check = new System.Windows.Forms.CheckBox();
+            this.hoodieBlack_check = new System.Windows.Forms.CheckBox();
+            this.shirt_check = new System.Windows.Forms.CheckBox();
+            this.polo_check = new System.Windows.Forms.CheckBox();
+            this.lanyard_check = new System.Windows.Forms.CheckBox();
+            this.invoiceAmount_lbl = new System.Windows.Forms.Label();
             this.invoiceChange_lbl = new System.Windows.Forms.Label();
             this.invoiceChange_txt = new System.Windows.Forms.TextBox();
             this.invoiceTotal_txt = new System.Windows.Forms.TextBox();
@@ -51,50 +57,32 @@
             this.invoiceAmtPaid_txt = new System.Windows.Forms.TextBox();
             this.invoiceAmtPaid_lbl = new System.Windows.Forms.Label();
             this.invoiceAmount_txt = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.paymentFor_cb = new System.Windows.Forms.ComboBox();
             this.paymentType_lbl = new System.Windows.Forms.Label();
             this.invoiceDate_lbl = new System.Windows.Forms.Label();
             this.invoiceDate_dtp = new System.Windows.Forms.DateTimePicker();
             this.preview_btn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.search_btn = new System.Windows.Forms.Button();
+            this.oic_lbl = new System.Windows.Forms.Label();
+            this.oic_cb = new System.Windows.Forms.ComboBox();
             this.clearAll_btn = new System.Windows.Forms.Button();
             this.clear_btn = new System.Windows.Forms.Button();
             this.exit_btn = new System.Windows.Forms.Button();
             this.invoiceHistory_dgv = new System.Windows.Forms.DataGridView();
-            this.invoiceCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.officerInCharge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calculate_btn = new System.Windows.Forms.Button();
             this.studInfo_groupbox.SuspendLayout();
             this.invoiceBox_groupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceHistory_dgv)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(17, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Invoice Code :";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(113, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(201, 23);
-            this.textBox1.TabIndex = 1;
-            // 
             // studInfo_groupbox
             // 
-            this.studInfo_groupbox.Controls.Add(this.studType_check);
+            this.studInfo_groupbox.Controls.Add(this.officer_check);
             this.studInfo_groupbox.Controls.Add(this.studYear_cb);
             this.studInfo_groupbox.Controls.Add(this.studYear_lbl);
             this.studInfo_groupbox.Controls.Add(this.studCourse_cb);
@@ -103,22 +91,23 @@
             this.studInfo_groupbox.Controls.Add(this.studLN_lbl);
             this.studInfo_groupbox.Controls.Add(this.studFN_txt);
             this.studInfo_groupbox.Controls.Add(this.studFN_lbl);
-            this.studInfo_groupbox.Location = new System.Drawing.Point(17, 57);
+            this.studInfo_groupbox.Location = new System.Drawing.Point(12, 19);
             this.studInfo_groupbox.Name = "studInfo_groupbox";
-            this.studInfo_groupbox.Size = new System.Drawing.Size(361, 154);
+            this.studInfo_groupbox.Size = new System.Drawing.Size(376, 154);
             this.studInfo_groupbox.TabIndex = 2;
             this.studInfo_groupbox.TabStop = false;
             this.studInfo_groupbox.Text = "Student Information";
             // 
-            // studType_check
+            // officer_check
             // 
-            this.studType_check.AutoSize = true;
-            this.studType_check.Location = new System.Drawing.Point(266, 88);
-            this.studType_check.Name = "studType_check";
-            this.studType_check.Size = new System.Drawing.Size(62, 19);
-            this.studType_check.TabIndex = 10;
-            this.studType_check.Text = "Officer";
-            this.studType_check.UseVisualStyleBackColor = true;
+            this.officer_check.AutoSize = true;
+            this.officer_check.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.officer_check.Location = new System.Drawing.Point(255, 85);
+            this.officer_check.Name = "officer_check";
+            this.officer_check.Size = new System.Drawing.Size(74, 24);
+            this.officer_check.TabIndex = 31;
+            this.officer_check.Text = "Officer";
+            this.officer_check.UseVisualStyleBackColor = true;
             // 
             // studYear_cb
             // 
@@ -168,7 +157,7 @@
             // 
             this.studLN_txt.Location = new System.Drawing.Point(99, 53);
             this.studLN_txt.Name = "studLN_txt";
-            this.studLN_txt.Size = new System.Drawing.Size(242, 23);
+            this.studLN_txt.Size = new System.Drawing.Size(262, 23);
             this.studLN_txt.TabIndex = 5;
             // 
             // studLN_lbl
@@ -185,7 +174,7 @@
             // 
             this.studFN_txt.Location = new System.Drawing.Point(99, 22);
             this.studFN_txt.Name = "studFN_txt";
-            this.studFN_txt.Size = new System.Drawing.Size(242, 23);
+            this.studFN_txt.Size = new System.Drawing.Size(262, 23);
             this.studFN_txt.TabIndex = 3;
             // 
             // studFN_lbl
@@ -200,6 +189,14 @@
             // 
             // invoiceBox_groupbox
             // 
+            this.invoiceBox_groupbox.Controls.Add(this.totebag2_check);
+            this.invoiceBox_groupbox.Controls.Add(this.totebag1_check);
+            this.invoiceBox_groupbox.Controls.Add(this.hoodieWhite_check);
+            this.invoiceBox_groupbox.Controls.Add(this.hoodieBlack_check);
+            this.invoiceBox_groupbox.Controls.Add(this.shirt_check);
+            this.invoiceBox_groupbox.Controls.Add(this.polo_check);
+            this.invoiceBox_groupbox.Controls.Add(this.lanyard_check);
+            this.invoiceBox_groupbox.Controls.Add(this.invoiceAmount_lbl);
             this.invoiceBox_groupbox.Controls.Add(this.invoiceChange_lbl);
             this.invoiceBox_groupbox.Controls.Add(this.invoiceChange_txt);
             this.invoiceBox_groupbox.Controls.Add(this.invoiceTotal_txt);
@@ -210,20 +207,107 @@
             this.invoiceBox_groupbox.Controls.Add(this.invoiceAmtPaid_txt);
             this.invoiceBox_groupbox.Controls.Add(this.invoiceAmtPaid_lbl);
             this.invoiceBox_groupbox.Controls.Add(this.invoiceAmount_txt);
-            this.invoiceBox_groupbox.Controls.Add(this.comboBox1);
+            this.invoiceBox_groupbox.Controls.Add(this.paymentFor_cb);
             this.invoiceBox_groupbox.Controls.Add(this.paymentType_lbl);
-            this.invoiceBox_groupbox.Location = new System.Drawing.Point(17, 232);
+            this.invoiceBox_groupbox.Location = new System.Drawing.Point(12, 187);
             this.invoiceBox_groupbox.Name = "invoiceBox_groupbox";
-            this.invoiceBox_groupbox.Size = new System.Drawing.Size(361, 257);
+            this.invoiceBox_groupbox.Size = new System.Drawing.Size(378, 311);
             this.invoiceBox_groupbox.TabIndex = 3;
             this.invoiceBox_groupbox.TabStop = false;
             this.invoiceBox_groupbox.Text = "Invoice Information";
+            // 
+            // totebag2_check
+            // 
+            this.totebag2_check.AutoSize = true;
+            this.totebag2_check.Enabled = false;
+            this.totebag2_check.Location = new System.Drawing.Point(229, 96);
+            this.totebag2_check.Name = "totebag2_check";
+            this.totebag2_check.Size = new System.Drawing.Size(142, 19);
+            this.totebag2_check.TabIndex = 31;
+            this.totebag2_check.Text = "Totebag (Hello World)";
+            this.totebag2_check.UseVisualStyleBackColor = true;
+            // 
+            // totebag1_check
+            // 
+            this.totebag1_check.AutoSize = true;
+            this.totebag1_check.Enabled = false;
+            this.totebag1_check.Location = new System.Drawing.Point(122, 96);
+            this.totebag1_check.Name = "totebag1_check";
+            this.totebag1_check.Size = new System.Drawing.Size(101, 19);
+            this.totebag1_check.TabIndex = 30;
+            this.totebag1_check.Text = "Totebag (CCS)";
+            this.totebag1_check.UseVisualStyleBackColor = true;
+            // 
+            // hoodieWhite_check
+            // 
+            this.hoodieWhite_check.AutoSize = true;
+            this.hoodieWhite_check.Enabled = false;
+            this.hoodieWhite_check.Location = new System.Drawing.Point(9, 96);
+            this.hoodieWhite_check.Name = "hoodieWhite_check";
+            this.hoodieWhite_check.Size = new System.Drawing.Size(107, 19);
+            this.hoodieWhite_check.TabIndex = 29;
+            this.hoodieWhite_check.Text = "Hoodie (White)";
+            this.hoodieWhite_check.UseVisualStyleBackColor = true;
+            // 
+            // hoodieBlack_check
+            // 
+            this.hoodieBlack_check.AutoSize = true;
+            this.hoodieBlack_check.Enabled = false;
+            this.hoodieBlack_check.Location = new System.Drawing.Point(245, 69);
+            this.hoodieBlack_check.Name = "hoodieBlack_check";
+            this.hoodieBlack_check.Size = new System.Drawing.Size(104, 19);
+            this.hoodieBlack_check.TabIndex = 28;
+            this.hoodieBlack_check.Text = "Hoodie (Black)";
+            this.hoodieBlack_check.UseVisualStyleBackColor = true;
+            // 
+            // shirt_check
+            // 
+            this.shirt_check.AutoSize = true;
+            this.shirt_check.Enabled = false;
+            this.shirt_check.Location = new System.Drawing.Point(178, 69);
+            this.shirt_check.Name = "shirt_check";
+            this.shirt_check.Size = new System.Drawing.Size(61, 19);
+            this.shirt_check.TabIndex = 27;
+            this.shirt_check.Text = "T-Shirt";
+            this.shirt_check.UseVisualStyleBackColor = true;
+            // 
+            // polo_check
+            // 
+            this.polo_check.AutoSize = true;
+            this.polo_check.Enabled = false;
+            this.polo_check.Location = new System.Drawing.Point(95, 69);
+            this.polo_check.Name = "polo_check";
+            this.polo_check.Size = new System.Drawing.Size(77, 19);
+            this.polo_check.TabIndex = 26;
+            this.polo_check.Text = "Polo Shirt";
+            this.polo_check.UseVisualStyleBackColor = true;
+            // 
+            // lanyard_check
+            // 
+            this.lanyard_check.AutoSize = true;
+            this.lanyard_check.Enabled = false;
+            this.lanyard_check.Location = new System.Drawing.Point(21, 69);
+            this.lanyard_check.Name = "lanyard_check";
+            this.lanyard_check.Size = new System.Drawing.Size(68, 19);
+            this.lanyard_check.TabIndex = 25;
+            this.lanyard_check.Text = "Lanyard";
+            this.lanyard_check.UseVisualStyleBackColor = true;
+            // 
+            // invoiceAmount_lbl
+            // 
+            this.invoiceAmount_lbl.AutoSize = true;
+            this.invoiceAmount_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.invoiceAmount_lbl.Location = new System.Drawing.Point(79, 131);
+            this.invoiceAmount_lbl.Name = "invoiceAmount_lbl";
+            this.invoiceAmount_lbl.Size = new System.Drawing.Size(72, 17);
+            this.invoiceAmount_lbl.TabIndex = 24;
+            this.invoiceAmount_lbl.Text = "Amount : ₱";
             // 
             // invoiceChange_lbl
             // 
             this.invoiceChange_lbl.AutoSize = true;
             this.invoiceChange_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.invoiceChange_lbl.Location = new System.Drawing.Point(69, 219);
+            this.invoiceChange_lbl.Location = new System.Drawing.Point(79, 278);
             this.invoiceChange_lbl.Name = "invoiceChange_lbl";
             this.invoiceChange_lbl.Size = new System.Drawing.Size(71, 17);
             this.invoiceChange_lbl.TabIndex = 23;
@@ -232,7 +316,7 @@
             // invoiceChange_txt
             // 
             this.invoiceChange_txt.Enabled = false;
-            this.invoiceChange_txt.Location = new System.Drawing.Point(146, 216);
+            this.invoiceChange_txt.Location = new System.Drawing.Point(156, 275);
             this.invoiceChange_txt.Name = "invoiceChange_txt";
             this.invoiceChange_txt.Size = new System.Drawing.Size(141, 23);
             this.invoiceChange_txt.TabIndex = 22;
@@ -241,7 +325,7 @@
             // 
             this.invoiceTotal_txt.Enabled = false;
             this.invoiceTotal_txt.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.invoiceTotal_txt.Location = new System.Drawing.Point(146, 184);
+            this.invoiceTotal_txt.Location = new System.Drawing.Point(156, 210);
             this.invoiceTotal_txt.Name = "invoiceTotal_txt";
             this.invoiceTotal_txt.Size = new System.Drawing.Size(141, 24);
             this.invoiceTotal_txt.TabIndex = 20;
@@ -250,7 +334,7 @@
             // 
             this.invoiceTotal_lbl.AutoSize = true;
             this.invoiceTotal_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.invoiceTotal_lbl.Location = new System.Drawing.Point(83, 187);
+            this.invoiceTotal_lbl.Location = new System.Drawing.Point(93, 213);
             this.invoiceTotal_lbl.Name = "invoiceTotal_lbl";
             this.invoiceTotal_lbl.Size = new System.Drawing.Size(57, 17);
             this.invoiceTotal_lbl.TabIndex = 19;
@@ -259,15 +343,15 @@
             // progressBar1
             // 
             this.progressBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.progressBar1.Location = new System.Drawing.Point(37, 165);
+            this.progressBar1.Location = new System.Drawing.Point(63, 192);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(277, 10);
+            this.progressBar1.Size = new System.Drawing.Size(254, 10);
             this.progressBar1.TabIndex = 18;
             // 
             // invoiceDiscount_txt
             // 
             this.invoiceDiscount_txt.Enabled = false;
-            this.invoiceDiscount_txt.Location = new System.Drawing.Point(146, 133);
+            this.invoiceDiscount_txt.Location = new System.Drawing.Point(156, 160);
             this.invoiceDiscount_txt.Name = "invoiceDiscount_txt";
             this.invoiceDiscount_txt.Size = new System.Drawing.Size(141, 23);
             this.invoiceDiscount_txt.TabIndex = 17;
@@ -276,7 +360,7 @@
             // 
             this.invoiceDiscount_lbl.AutoSize = true;
             this.invoiceDiscount_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.invoiceDiscount_lbl.Location = new System.Drawing.Point(63, 136);
+            this.invoiceDiscount_lbl.Location = new System.Drawing.Point(73, 163);
             this.invoiceDiscount_lbl.Name = "invoiceDiscount_lbl";
             this.invoiceDiscount_lbl.Size = new System.Drawing.Size(77, 17);
             this.invoiceDiscount_lbl.TabIndex = 16;
@@ -284,7 +368,7 @@
             // 
             // invoiceAmtPaid_txt
             // 
-            this.invoiceAmtPaid_txt.Location = new System.Drawing.Point(146, 101);
+            this.invoiceAmtPaid_txt.Location = new System.Drawing.Point(156, 243);
             this.invoiceAmtPaid_txt.Name = "invoiceAmtPaid_txt";
             this.invoiceAmtPaid_txt.Size = new System.Drawing.Size(141, 23);
             this.invoiceAmtPaid_txt.TabIndex = 15;
@@ -293,7 +377,7 @@
             // 
             this.invoiceAmtPaid_lbl.AutoSize = true;
             this.invoiceAmtPaid_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.invoiceAmtPaid_lbl.Location = new System.Drawing.Point(88, 104);
+            this.invoiceAmtPaid_lbl.Location = new System.Drawing.Point(98, 246);
             this.invoiceAmtPaid_lbl.Name = "invoiceAmtPaid_lbl";
             this.invoiceAmtPaid_lbl.Size = new System.Drawing.Size(52, 17);
             this.invoiceAmtPaid_lbl.TabIndex = 14;
@@ -302,22 +386,28 @@
             // invoiceAmount_txt
             // 
             this.invoiceAmount_txt.Enabled = false;
-            this.invoiceAmount_txt.Location = new System.Drawing.Point(146, 69);
+            this.invoiceAmount_txt.Location = new System.Drawing.Point(156, 128);
             this.invoiceAmount_txt.Name = "invoiceAmount_txt";
             this.invoiceAmount_txt.Size = new System.Drawing.Size(141, 23);
             this.invoiceAmount_txt.TabIndex = 13;
             // 
-            // comboBox1
+            // paymentFor_cb
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Membership Fee (1st sem)",
+            this.paymentFor_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.paymentFor_cb.FormattingEnabled = true;
+            this.paymentFor_cb.Items.AddRange(new object[] {
+            "Membership Fee (1st Sem)",
             "Merchandise",
-            "Intramurals Shirt"});
-            this.comboBox1.Location = new System.Drawing.Point(106, 24);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(235, 23);
-            this.comboBox1.TabIndex = 11;
+            "Intramurals Shirt",
+            "MemberShip Fee (2nd Sem)",
+            "College Days",
+            "ICT Congress (Early Bird)",
+            "ICT Congress (Regular)"});
+            this.paymentFor_cb.Location = new System.Drawing.Point(106, 24);
+            this.paymentFor_cb.Name = "paymentFor_cb";
+            this.paymentFor_cb.Size = new System.Drawing.Size(255, 23);
+            this.paymentFor_cb.TabIndex = 11;
+            this.paymentFor_cb.SelectedIndexChanged += new System.EventHandler(this.paymentFor_cb_SelectedIndexChanged);
             // 
             // paymentType_lbl
             // 
@@ -333,7 +423,7 @@
             // 
             this.invoiceDate_lbl.AutoSize = true;
             this.invoiceDate_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.invoiceDate_lbl.Location = new System.Drawing.Point(388, 19);
+            this.invoiceDate_lbl.Location = new System.Drawing.Point(405, 29);
             this.invoiceDate_lbl.Name = "invoiceDate_lbl";
             this.invoiceDate_lbl.Size = new System.Drawing.Size(42, 17);
             this.invoiceDate_lbl.TabIndex = 4;
@@ -341,35 +431,35 @@
             // 
             // invoiceDate_dtp
             // 
-            this.invoiceDate_dtp.Location = new System.Drawing.Point(436, 16);
+            this.invoiceDate_dtp.Location = new System.Drawing.Point(453, 26);
             this.invoiceDate_dtp.Name = "invoiceDate_dtp";
             this.invoiceDate_dtp.Size = new System.Drawing.Size(200, 23);
             this.invoiceDate_dtp.TabIndex = 5;
             // 
             // preview_btn
             // 
-            this.preview_btn.Location = new System.Drawing.Point(17, 541);
+            this.preview_btn.Location = new System.Drawing.Point(144, 551);
             this.preview_btn.Name = "preview_btn";
-            this.preview_btn.Size = new System.Drawing.Size(176, 32);
+            this.preview_btn.Size = new System.Drawing.Size(239, 32);
             this.preview_btn.TabIndex = 6;
             this.preview_btn.Text = "PREVIEW PRINT";
             this.preview_btn.UseVisualStyleBackColor = true;
             this.preview_btn.Click += new System.EventHandler(this.preview_btn_Click);
             // 
-            // label2
+            // oic_lbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(17, 501);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 17);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Officer-in-Charge :";
+            this.oic_lbl.AutoSize = true;
+            this.oic_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.oic_lbl.Location = new System.Drawing.Point(22, 511);
+            this.oic_lbl.Name = "oic_lbl";
+            this.oic_lbl.Size = new System.Drawing.Size(116, 17);
+            this.oic_lbl.TabIndex = 7;
+            this.oic_lbl.Text = "Officer-in-Charge :";
             // 
-            // comboBox2
+            // oic_cb
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.oic_cb.FormattingEnabled = true;
+            this.oic_cb.Items.AddRange(new object[] {
             "Mary Therese Colina",
             "Vhea Therese Valmoria",
             "Joshua Jakosalem",
@@ -383,24 +473,14 @@
             "Alexis Joseph Tan",
             "Daniel Stephen Alvarez",
             "Ysabel Marie Colina"});
-            this.comboBox2.Location = new System.Drawing.Point(139, 498);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(239, 23);
-            this.comboBox2.TabIndex = 24;
-            // 
-            // search_btn
-            // 
-            this.search_btn.Location = new System.Drawing.Point(199, 541);
-            this.search_btn.Name = "search_btn";
-            this.search_btn.Size = new System.Drawing.Size(179, 32);
-            this.search_btn.TabIndex = 25;
-            this.search_btn.Text = "SEARCH INVOICES";
-            this.search_btn.UseVisualStyleBackColor = true;
-            this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
+            this.oic_cb.Location = new System.Drawing.Point(144, 508);
+            this.oic_cb.Name = "oic_cb";
+            this.oic_cb.Size = new System.Drawing.Size(239, 23);
+            this.oic_cb.TabIndex = 24;
             // 
             // clearAll_btn
             // 
-            this.clearAll_btn.Location = new System.Drawing.Point(139, 583);
+            this.clearAll_btn.Location = new System.Drawing.Point(144, 592);
             this.clearAll_btn.Name = "clearAll_btn";
             this.clearAll_btn.Size = new System.Drawing.Size(116, 32);
             this.clearAll_btn.TabIndex = 26;
@@ -410,43 +490,45 @@
             // 
             // clear_btn
             // 
-            this.clear_btn.Location = new System.Drawing.Point(17, 583);
+            this.clear_btn.Location = new System.Drawing.Point(22, 592);
             this.clear_btn.Name = "clear_btn";
             this.clear_btn.Size = new System.Drawing.Size(116, 32);
             this.clear_btn.TabIndex = 27;
             this.clear_btn.Text = "CLEAR";
             this.clear_btn.UseVisualStyleBackColor = true;
+            this.clear_btn.Click += new System.EventHandler(this.clear_btn_Click);
             // 
             // exit_btn
             // 
-            this.exit_btn.Location = new System.Drawing.Point(262, 583);
+            this.exit_btn.Location = new System.Drawing.Point(267, 592);
             this.exit_btn.Name = "exit_btn";
             this.exit_btn.Size = new System.Drawing.Size(116, 32);
             this.exit_btn.TabIndex = 28;
             this.exit_btn.Text = "EXIT";
             this.exit_btn.UseVisualStyleBackColor = true;
+            this.exit_btn.Click += new System.EventHandler(this.exit_btn_Click);
             // 
             // invoiceHistory_dgv
             // 
             this.invoiceHistory_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invoiceHistory_dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.invoiceCode,
+            this.invoiceDate,
             this.lastName,
             this.firstName,
             this.paymentType,
             this.totalAmount,
             this.officerInCharge});
-            this.invoiceHistory_dgv.Location = new System.Drawing.Point(388, 61);
+            this.invoiceHistory_dgv.Location = new System.Drawing.Point(401, 61);
             this.invoiceHistory_dgv.Name = "invoiceHistory_dgv";
             this.invoiceHistory_dgv.RowTemplate.Height = 25;
-            this.invoiceHistory_dgv.Size = new System.Drawing.Size(611, 554);
+            this.invoiceHistory_dgv.Size = new System.Drawing.Size(647, 563);
             this.invoiceHistory_dgv.TabIndex = 29;
             // 
-            // invoiceCode
+            // invoiceDate
             // 
-            this.invoiceCode.HeaderText = "Invoice Code";
-            this.invoiceCode.Name = "invoiceCode";
-            this.invoiceCode.ReadOnly = true;
+            this.invoiceDate.HeaderText = "Date";
+            this.invoiceDate.Name = "invoiceDate";
+            this.invoiceDate.ReadOnly = true;
             // 
             // lastName
             // 
@@ -478,25 +560,33 @@
             this.officerInCharge.Name = "officerInCharge";
             this.officerInCharge.ReadOnly = true;
             // 
+            // calculate_btn
+            // 
+            this.calculate_btn.Location = new System.Drawing.Point(22, 551);
+            this.calculate_btn.Name = "calculate_btn";
+            this.calculate_btn.Size = new System.Drawing.Size(116, 32);
+            this.calculate_btn.TabIndex = 30;
+            this.calculate_btn.Text = "CALCULATE";
+            this.calculate_btn.UseVisualStyleBackColor = true;
+            this.calculate_btn.Click += new System.EventHandler(this.calculate_btn_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 627);
+            this.ClientSize = new System.Drawing.Size(1064, 641);
+            this.Controls.Add(this.calculate_btn);
             this.Controls.Add(this.invoiceHistory_dgv);
             this.Controls.Add(this.exit_btn);
             this.Controls.Add(this.clear_btn);
             this.Controls.Add(this.clearAll_btn);
-            this.Controls.Add(this.search_btn);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.oic_cb);
+            this.Controls.Add(this.oic_lbl);
             this.Controls.Add(this.preview_btn);
             this.Controls.Add(this.invoiceDate_dtp);
             this.Controls.Add(this.invoiceDate_lbl);
             this.Controls.Add(this.invoiceBox_groupbox);
             this.Controls.Add(this.studInfo_groupbox);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
             this.Name = "Main";
             this.Text = "PSITS-B POS UWU";
             this.studInfo_groupbox.ResumeLayout(false);
@@ -510,11 +600,7 @@
         }
 
         #endregion
-
-        private Label label1;
-        private TextBox textBox1;
         private GroupBox studInfo_groupbox;
-        private CheckBox studType_check;
         private ComboBox studYear_cb;
         private Label studYear_lbl;
         private ComboBox studCourse_cb;
@@ -526,7 +612,7 @@
         private GroupBox invoiceBox_groupbox;
         private Label invoiceDate_lbl;
         private DateTimePicker invoiceDate_dtp;
-        private ComboBox comboBox1;
+        private ComboBox paymentFor_cb;
         private Label paymentType_lbl;
         private TextBox invoiceAmount_txt;
         private TextBox invoiceAmtPaid_txt;
@@ -539,14 +625,23 @@
         private TextBox invoiceChange_txt;
         private Label invoiceChange_lbl;
         private Button preview_btn;
-        private Label label2;
-        private ComboBox comboBox2;
-        private Button search_btn;
+        private Label oic_lbl;
+        private ComboBox oic_cb;
         private Button clearAll_btn;
         private Button clear_btn;
         private Button exit_btn;
         private DataGridView invoiceHistory_dgv;
-        private DataGridViewTextBoxColumn invoiceCode;
+        private Label invoiceAmount_lbl;
+        private Button calculate_btn;
+        private CheckBox polo_check;
+        private CheckBox lanyard_check;
+        private CheckBox totebag2_check;
+        private CheckBox totebag1_check;
+        private CheckBox hoodieWhite_check;
+        private CheckBox hoodieBlack_check;
+        private CheckBox shirt_check;
+        private CheckBox officer_check;
+        private DataGridViewTextBoxColumn invoiceDate;
         private DataGridViewTextBoxColumn lastName;
         private DataGridViewTextBoxColumn firstName;
         private DataGridViewTextBoxColumn paymentType;

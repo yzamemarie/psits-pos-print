@@ -1,6 +1,6 @@
 ﻿namespace psits_pos
 {
-    partial class merchSelection
+    partial class receiptPreview
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // merchSelection
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 351);
-            this.Name = "merchSelection";
-            this.Text = "PSITS-B POS - Merch Selection";
-            this.ResumeLayout(false);
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "receiptPreview";
         }
 
         #endregion
