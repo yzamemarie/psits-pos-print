@@ -16,5 +16,7 @@ namespace psits_pos
         {
             InitializeComponent();
         }
+
+        //prints receipt 
     }
 }

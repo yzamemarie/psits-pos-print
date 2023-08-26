@@ -138,6 +138,7 @@ namespace psits_pos
             }
         }
 
+        //previews receipt after entering information
         private void preview_btn_Click(object sender, EventArgs e)
         {
             receiptPreview preview = new receiptPreview();
