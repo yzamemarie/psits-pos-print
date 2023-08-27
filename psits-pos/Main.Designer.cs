@@ -69,19 +69,20 @@
             this.clearAll_btn = new System.Windows.Forms.Button();
             this.clear_btn = new System.Windows.Forms.Button();
             this.exit_btn = new System.Windows.Forms.Button();
-            this.invoiceHistory_dgv = new System.Windows.Forms.DataGridView();
+            this.invoiceHistory_table = new System.Windows.Forms.DataGridView();
+            this.h_invoiceCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.h_invoiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.h_studentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.h_paymentType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.h_totalAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.h_oic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.find_btn = new System.Windows.Forms.Button();
             this.save_btn = new System.Windows.Forms.Button();
-            this.invoiceCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invoiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.officerInCharge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceCode_txt = new System.Windows.Forms.TextBox();
+            this.invoiceCode_lbl = new System.Windows.Forms.Label();
             this.studInfo_groupbox.SuspendLayout();
             this.invoiceBox_groupbox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceHistory_dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceHistory_table)).BeginInit();
             this.SuspendLayout();
             // 
             // studInfo_groupbox
@@ -97,7 +98,7 @@
             this.studInfo_groupbox.Controls.Add(this.studLN_lbl);
             this.studInfo_groupbox.Controls.Add(this.studFN_txt);
             this.studInfo_groupbox.Controls.Add(this.studFN_lbl);
-            this.studInfo_groupbox.Location = new System.Drawing.Point(12, 19);
+            this.studInfo_groupbox.Location = new System.Drawing.Point(12, 60);
             this.studInfo_groupbox.Name = "studInfo_groupbox";
             this.studInfo_groupbox.Size = new System.Drawing.Size(376, 185);
             this.studInfo_groupbox.TabIndex = 2;
@@ -117,9 +118,9 @@
             this.studIdNum_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.studIdNum_lbl.Location = new System.Drawing.Point(14, 25);
             this.studIdNum_lbl.Name = "studIdNum_lbl";
-            this.studIdNum_lbl.Size = new System.Drawing.Size(78, 17);
+            this.studIdNum_lbl.Size = new System.Drawing.Size(79, 17);
             this.studIdNum_lbl.TabIndex = 32;
-            this.studIdNum_lbl.Text = "First Name :";
+            this.studIdNum_lbl.Text = "ID Number :";
             // 
             // officer_check
             // 
@@ -134,11 +135,13 @@
             // 
             // studYear_cb
             // 
+            this.studYear_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.studYear_cb.FormattingEnabled = true;
             this.studYear_cb.Items.AddRange(new object[] {
-            "BSIT",
-            "BSIS",
-            "ACT"});
+            "1",
+            "2",
+            "3",
+            "4"});
             this.studYear_cb.Location = new System.Drawing.Point(98, 147);
             this.studYear_cb.Name = "studYear_cb";
             this.studYear_cb.Size = new System.Drawing.Size(143, 23);
@@ -156,6 +159,7 @@
             // 
             // studCourse_cb
             // 
+            this.studCourse_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.studCourse_cb.FormattingEnabled = true;
             this.studCourse_cb.Items.AddRange(new object[] {
             "BSIT",
@@ -232,7 +236,7 @@
             this.invoiceBox_groupbox.Controls.Add(this.invoiceAmount_txt);
             this.invoiceBox_groupbox.Controls.Add(this.paymentFor_cb);
             this.invoiceBox_groupbox.Controls.Add(this.paymentType_lbl);
-            this.invoiceBox_groupbox.Location = new System.Drawing.Point(12, 214);
+            this.invoiceBox_groupbox.Location = new System.Drawing.Point(12, 255);
             this.invoiceBox_groupbox.Name = "invoiceBox_groupbox";
             this.invoiceBox_groupbox.Size = new System.Drawing.Size(378, 311);
             this.invoiceBox_groupbox.TabIndex = 3;
@@ -447,7 +451,7 @@
             // 
             this.invoiceDate_lbl.AutoSize = true;
             this.invoiceDate_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.invoiceDate_lbl.Location = new System.Drawing.Point(405, 29);
+            this.invoiceDate_lbl.Location = new System.Drawing.Point(401, 26);
             this.invoiceDate_lbl.Name = "invoiceDate_lbl";
             this.invoiceDate_lbl.Size = new System.Drawing.Size(42, 17);
             this.invoiceDate_lbl.TabIndex = 4;
@@ -455,14 +459,14 @@
             // 
             // invoiceDate_dtp
             // 
-            this.invoiceDate_dtp.Location = new System.Drawing.Point(453, 26);
+            this.invoiceDate_dtp.Location = new System.Drawing.Point(449, 23);
             this.invoiceDate_dtp.Name = "invoiceDate_dtp";
             this.invoiceDate_dtp.Size = new System.Drawing.Size(200, 23);
             this.invoiceDate_dtp.TabIndex = 5;
             // 
             // preview_btn
             // 
-            this.preview_btn.Location = new System.Drawing.Point(267, 577);
+            this.preview_btn.Location = new System.Drawing.Point(267, 618);
             this.preview_btn.Name = "preview_btn";
             this.preview_btn.Size = new System.Drawing.Size(116, 32);
             this.preview_btn.TabIndex = 6;
@@ -474,7 +478,7 @@
             // 
             this.oic_lbl.AutoSize = true;
             this.oic_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.oic_lbl.Location = new System.Drawing.Point(22, 538);
+            this.oic_lbl.Location = new System.Drawing.Point(22, 579);
             this.oic_lbl.Name = "oic_lbl";
             this.oic_lbl.Size = new System.Drawing.Size(116, 17);
             this.oic_lbl.TabIndex = 7;
@@ -482,6 +486,7 @@
             // 
             // oic_cb
             // 
+            this.oic_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.oic_cb.FormattingEnabled = true;
             this.oic_cb.Items.AddRange(new object[] {
             "Mary Therese Colina",
@@ -497,14 +502,14 @@
             "Alexis Joseph Tan",
             "Daniel Stephen Alvarez",
             "Ysabel Marie Colina"});
-            this.oic_cb.Location = new System.Drawing.Point(144, 535);
+            this.oic_cb.Location = new System.Drawing.Point(144, 576);
             this.oic_cb.Name = "oic_cb";
             this.oic_cb.Size = new System.Drawing.Size(239, 23);
             this.oic_cb.TabIndex = 24;
             // 
             // clearAll_btn
             // 
-            this.clearAll_btn.Location = new System.Drawing.Point(144, 618);
+            this.clearAll_btn.Location = new System.Drawing.Point(144, 659);
             this.clearAll_btn.Name = "clearAll_btn";
             this.clearAll_btn.Size = new System.Drawing.Size(116, 32);
             this.clearAll_btn.TabIndex = 26;
@@ -514,7 +519,7 @@
             // 
             // clear_btn
             // 
-            this.clear_btn.Location = new System.Drawing.Point(22, 618);
+            this.clear_btn.Location = new System.Drawing.Point(22, 659);
             this.clear_btn.Name = "clear_btn";
             this.clear_btn.Size = new System.Drawing.Size(116, 32);
             this.clear_btn.TabIndex = 27;
@@ -524,7 +529,7 @@
             // 
             // exit_btn
             // 
-            this.exit_btn.Location = new System.Drawing.Point(267, 618);
+            this.exit_btn.Location = new System.Drawing.Point(267, 659);
             this.exit_btn.Name = "exit_btn";
             this.exit_btn.Size = new System.Drawing.Size(116, 32);
             this.exit_btn.TabIndex = 28;
@@ -532,27 +537,62 @@
             this.exit_btn.UseVisualStyleBackColor = true;
             this.exit_btn.Click += new System.EventHandler(this.exit_btn_Click);
             // 
-            // invoiceHistory_dgv
+            // invoiceHistory_table
             // 
-            this.invoiceHistory_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.invoiceHistory_dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.invoiceCode,
-            this.invoiceDate,
-            this.lastName,
-            this.firstName,
-            this.paymentType,
-            this.totalAmount,
-            this.officerInCharge});
-            this.invoiceHistory_dgv.Location = new System.Drawing.Point(401, 61);
-            this.invoiceHistory_dgv.Name = "invoiceHistory_dgv";
-            this.invoiceHistory_dgv.ReadOnly = true;
-            this.invoiceHistory_dgv.RowTemplate.Height = 25;
-            this.invoiceHistory_dgv.Size = new System.Drawing.Size(647, 589);
-            this.invoiceHistory_dgv.TabIndex = 29;
+            this.invoiceHistory_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.invoiceHistory_table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.h_invoiceCode,
+            this.h_invoiceDate,
+            this.h_studentName,
+            this.h_paymentType,
+            this.h_totalAmount,
+            this.h_oic});
+            this.invoiceHistory_table.Location = new System.Drawing.Point(401, 61);
+            this.invoiceHistory_table.Name = "invoiceHistory_table";
+            this.invoiceHistory_table.ReadOnly = true;
+            this.invoiceHistory_table.RowTemplate.Height = 25;
+            this.invoiceHistory_table.Size = new System.Drawing.Size(647, 630);
+            this.invoiceHistory_table.TabIndex = 29;
+            // 
+            // h_invoiceCode
+            // 
+            this.h_invoiceCode.HeaderText = "Code";
+            this.h_invoiceCode.Name = "h_invoiceCode";
+            this.h_invoiceCode.ReadOnly = true;
+            // 
+            // h_invoiceDate
+            // 
+            this.h_invoiceDate.HeaderText = "Date";
+            this.h_invoiceDate.Name = "h_invoiceDate";
+            this.h_invoiceDate.ReadOnly = true;
+            // 
+            // h_studentName
+            // 
+            this.h_studentName.HeaderText = "Student\'s Name";
+            this.h_studentName.Name = "h_studentName";
+            this.h_studentName.ReadOnly = true;
+            // 
+            // h_paymentType
+            // 
+            this.h_paymentType.HeaderText = "Payment Type";
+            this.h_paymentType.Name = "h_paymentType";
+            this.h_paymentType.ReadOnly = true;
+            // 
+            // h_totalAmount
+            // 
+            this.h_totalAmount.HeaderText = "Total";
+            this.h_totalAmount.Name = "h_totalAmount";
+            this.h_totalAmount.ReadOnly = true;
+            // 
+            // h_oic
+            // 
+            this.h_oic.HeaderText = "OIC";
+            this.h_oic.Name = "h_oic";
+            this.h_oic.ReadOnly = true;
             // 
             // find_btn
             // 
-            this.find_btn.Location = new System.Drawing.Point(144, 577);
+            this.find_btn.Location = new System.Drawing.Point(144, 618);
             this.find_btn.Name = "find_btn";
             this.find_btn.Size = new System.Drawing.Size(116, 32);
             this.find_btn.TabIndex = 31;
@@ -562,7 +602,7 @@
             // 
             // save_btn
             // 
-            this.save_btn.Location = new System.Drawing.Point(22, 577);
+            this.save_btn.Location = new System.Drawing.Point(22, 618);
             this.save_btn.Name = "save_btn";
             this.save_btn.Size = new System.Drawing.Size(116, 32);
             this.save_btn.TabIndex = 32;
@@ -570,56 +610,33 @@
             this.save_btn.UseVisualStyleBackColor = true;
             this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
             // 
-            // invoiceCode
+            // invoiceCode_txt
             // 
-            this.invoiceCode.HeaderText = "Code";
-            this.invoiceCode.Name = "invoiceCode";
-            this.invoiceCode.ReadOnly = true;
+            this.invoiceCode_txt.Location = new System.Drawing.Point(123, 23);
+            this.invoiceCode_txt.Name = "invoiceCode_txt";
+            this.invoiceCode_txt.Size = new System.Drawing.Size(249, 23);
+            this.invoiceCode_txt.TabIndex = 35;
             // 
-            // invoiceDate
+            // invoiceCode_lbl
             // 
-            this.invoiceDate.HeaderText = "Date";
-            this.invoiceDate.Name = "invoiceDate";
-            this.invoiceDate.ReadOnly = true;
-            // 
-            // lastName
-            // 
-            this.lastName.HeaderText = "Last Name";
-            this.lastName.Name = "lastName";
-            this.lastName.ReadOnly = true;
-            // 
-            // firstName
-            // 
-            this.firstName.HeaderText = "First Name";
-            this.firstName.Name = "firstName";
-            this.firstName.ReadOnly = true;
-            // 
-            // paymentType
-            // 
-            this.paymentType.HeaderText = "Payment Type";
-            this.paymentType.Name = "paymentType";
-            this.paymentType.ReadOnly = true;
-            // 
-            // totalAmount
-            // 
-            this.totalAmount.HeaderText = "Total";
-            this.totalAmount.Name = "totalAmount";
-            this.totalAmount.ReadOnly = true;
-            // 
-            // officerInCharge
-            // 
-            this.officerInCharge.HeaderText = "OIC";
-            this.officerInCharge.Name = "officerInCharge";
-            this.officerInCharge.ReadOnly = true;
+            this.invoiceCode_lbl.AutoSize = true;
+            this.invoiceCode_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.invoiceCode_lbl.Location = new System.Drawing.Point(27, 26);
+            this.invoiceCode_lbl.Name = "invoiceCode_lbl";
+            this.invoiceCode_lbl.Size = new System.Drawing.Size(90, 17);
+            this.invoiceCode_lbl.TabIndex = 34;
+            this.invoiceCode_lbl.Text = "Invoice Code :";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 674);
+            this.ClientSize = new System.Drawing.Size(1064, 719);
+            this.Controls.Add(this.invoiceCode_txt);
+            this.Controls.Add(this.invoiceCode_lbl);
             this.Controls.Add(this.save_btn);
             this.Controls.Add(this.find_btn);
-            this.Controls.Add(this.invoiceHistory_dgv);
+            this.Controls.Add(this.invoiceHistory_table);
             this.Controls.Add(this.exit_btn);
             this.Controls.Add(this.clear_btn);
             this.Controls.Add(this.clearAll_btn);
@@ -636,7 +653,7 @@
             this.studInfo_groupbox.PerformLayout();
             this.invoiceBox_groupbox.ResumeLayout(false);
             this.invoiceBox_groupbox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceHistory_dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceHistory_table)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -673,7 +690,7 @@
         private Button clearAll_btn;
         private Button clear_btn;
         private Button exit_btn;
-        private DataGridView invoiceHistory_dgv;
+        private DataGridView invoiceHistory_table;
         private Label invoiceAmount_lbl;
         private CheckBox polo_check;
         private CheckBox lanyard_check;
@@ -687,12 +704,13 @@
         private Label studIdNum_lbl;
         private Button find_btn;
         private Button save_btn;
-        private DataGridViewTextBoxColumn invoiceCode;
-        private DataGridViewTextBoxColumn invoiceDate;
-        private DataGridViewTextBoxColumn lastName;
-        private DataGridViewTextBoxColumn firstName;
-        private DataGridViewTextBoxColumn paymentType;
-        private DataGridViewTextBoxColumn totalAmount;
-        private DataGridViewTextBoxColumn officerInCharge;
+        private TextBox invoiceCode_txt;
+        private Label invoiceCode_lbl;
+        private DataGridViewTextBoxColumn h_invoiceCode;
+        private DataGridViewTextBoxColumn h_invoiceDate;
+        private DataGridViewTextBoxColumn h_studentName;
+        private DataGridViewTextBoxColumn h_paymentType;
+        private DataGridViewTextBoxColumn h_totalAmount;
+        private DataGridViewTextBoxColumn h_oic;
     }
 }

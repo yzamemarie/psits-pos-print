@@ -20,10 +20,9 @@ namespace psits_pos
 
         private void invoiceAmtPaid_txt_KeyPress(object sender, KeyPressEventArgs e)
         {
+           
             if (e.KeyChar == (char)Keys.Enter)
             {
-                bool found = false;
-
                 int paid = 0;
                 double discountedPrice = 0, totalAmtDisc = 0, change = 0, priceAmt = 0, grandTotal = 0;
 
@@ -46,32 +45,34 @@ namespace psits_pos
                 //grandtotal is the value taken from "Total" textbox regardless discounted or not
                 grandTotal = Double.Parse(invoiceTotal_txt.Text);
 
-                if (invoiceAmtPaid_txt.Text != null)
-                {
-
-                    try
+                try {
+                    if (invoiceAmtPaid_txt.Text != null)
                     {
-                        paid = Int32.Parse(invoiceAmtPaid_txt.Text);
 
-                        if (paid >= grandTotal)
+                        try
                         {
-                            change = paid - grandTotal;
-                            invoiceChange_txt.Text = Math.Round(change, 2).ToString();
+                            paid = Int32.Parse(invoiceAmtPaid_txt.Text);
+
+                            if (paid >= grandTotal)
+                            {
+                                change = paid - grandTotal;
+                                invoiceChange_txt.Text = Math.Round(change, 2).ToString();
+                            }
+
                         }
-
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Insufficient payment!" + "\n" + ex);
+                            invoiceAmtPaid_txt.Clear();
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Insufficient payment!");
-                        invoiceAmtPaid_txt.Clear();
-                    }
-                }
 
-                if (found == false)
-                {
-                    MessageBox.Show("Please Enter Amount!");
+                } catch (Exception ex) {
+                    MessageBox.Show("Enter payment!" + "\n" + ex);
                     invoiceAmtPaid_txt.Clear();
                 }
+                               
+
             }
 
         }
@@ -160,71 +161,164 @@ namespace psits_pos
 
         }
 
-        private void save_btn_Click(object sender, EventArgs e)
+        //store into db from student information
+        public void storeStudentInfo() 
         {
             OleDbConnection thisConnection = new OleDbConnection(connectionString);
 
-            //store into db from student information
             string sql1 = "SELECT * FROM student_info_file";
-            OleDbDataAdapter thisAdapter1 = new OleDbDataAdapter(sql1, thisConnection);
-            OleDbCommandBuilder commandBuilder1 = new OleDbCommandBuilder(thisAdapter1);
-            DataSet thisSet1 = new DataSet();
-            thisAdapter1.Fill(thisSet1, "student_info_file");
-            DataRow thisRow1 = thisSet1.Tables["student_info_file"].NewRow();
+            OleDbDataAdapter thisAdapter = new OleDbDataAdapter(sql1, thisConnection);
+            OleDbCommandBuilder commandBuilder = new OleDbCommandBuilder(thisAdapter);
+            thisConnection.Open();
+            DataSet thisSet = new DataSet();
+            thisAdapter.Fill(thisSet, "student_info_file");
+            DataRow thisRow = thisSet.Tables["student_info_file"].NewRow();
 
             try
             {
-                thisRow1["stud_idNUm"] = studIdNum_txt.Text;
-                thisRow1["stud_lastName"] = studLN_txt.Text;
-                thisRow1["stud_firstName"] = studFN_txt.Text;
-                thisRow1["stud_course"] = studCourse_cb.Text;
-                thisRow1["stud_year"] = studYear_cb.Text;
-
-                if (officer_check.Checked)
-                {
-                    thisRow1["stud_type"] = "Officer";
-                }
+                thisRow["stud_idNUm"] = studIdNum_txt.Text;
+                thisRow["stud_invoiceCode"] = invoiceCode_txt.Text;
+                thisRow["stud_lastName"] = studLN_txt.Text;
+                thisRow["stud_firstName"] = studFN_txt.Text;
+                thisRow["stud_course"] = studCourse_cb.Text;
+                thisRow["stud_year"] = studYear_cb.Text;
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Please enter student information!");
-            }
-
-            //store into db from student information
-            string sql2 = "SELECT * FROM invoice_info_file";
-            OleDbDataAdapter thisAdapter2 = new OleDbDataAdapter(sql1, thisConnection);
-            OleDbCommandBuilder commandBuilder2 = new OleDbCommandBuilder(thisAdapter2);
-            DataSet thisSet2 = new DataSet();
-            thisAdapter1.Fill(thisSet2, "invoice_info_file");
-            DataRow thisRow2 = thisSet2.Tables["invoice_info_file"].NewRow();
-
-            try
-            {
-                thisRow2["invoice_code"] = generateInvoiceCode();
-                thisRow2["invoice_date"] = invoiceDate_dtp.Value;
-                thisRow2["invoice_type"] = paymentFor_cb.Text;
-                thisRow2["invoice_amount"] = invoiceAmount_txt.Text;
-                thisRow2["invoice_amountPaid"] = invoiceAmtPaid_txt.Text;
-                thisRow2["invoice_amountTotal"] = invoiceTotal_txt.Text;
-                thisRow2["invoice_change"] = invoiceChange_txt.Text;
-                thisRow2["invoice_oic"] = oic_cb.Text;
-
-                if (officer_check.Checked)
-                {
-                    thisRow1["invoice_discount"] = "Yes";
-                }
-                else
-                {
-                    thisRow1["invoice_discount"] = "No";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Please enter invoice information!");
+                MessageBox.Show("Please enter student information!" + "\n" + ex);
             }
 
             thisConnection.Close();
+        }
+
+        //store into db from student information
+        public void storeInvoiceInfo() 
+        {
+            OleDbConnection thisConnection = new OleDbConnection(connectionString);
+
+            string sql2 = "SELECT * FROM invoice_info_file";
+            OleDbDataAdapter thisAdapter = new OleDbDataAdapter(sql2, thisConnection);
+            OleDbCommandBuilder commandBuilder = new OleDbCommandBuilder(thisAdapter);
+            thisConnection.Open();
+            DataSet thisSet = new DataSet();
+            thisAdapter.Fill(thisSet, "invoice_info_file");
+            DataRow thisRow = thisSet.Tables["invoice_info_file"].NewRow();
+
+            try
+            {
+                thisRow["invoice_code"] = invoiceCode_txt.Text;
+                thisRow["invoice_date"] = invoiceDate_dtp.Value;
+                thisRow["invoice_studName"] = studFN_txt.Text + " " + studLN_txt.Text;
+                thisRow["invoice_type"] = paymentFor_cb.Text;
+                thisRow["invoice_amount"] = invoiceAmount_txt.Text;
+                thisRow["invoice_amountPaid"] = invoiceAmtPaid_txt.Text;
+                thisRow["invoice_amountTotal"] = invoiceTotal_txt.Text;
+                thisRow["invoice_change"] = invoiceChange_txt.Text;
+                thisRow["invoice_oic"] = oic_cb.Text;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please enter invoice information!" + "\n" + ex);
+            }
+
+            thisConnection.Close();
+        }
+        //displays info in table
+        public void displayTable() {
+            OleDbConnection thisConnection = new OleDbConnection(connectionString);
+
+            //to display in table
+            bool found = false;
+            string invoiceCode = "";
+            string invoiceDate = "";
+            string studentName = "";
+            string paymentType = "";
+            string totalAmount = "";
+            string officeInCharge = "";
+
+            string sql3 = "SELECT * FROM invoice_info_file WHERE invoice_code = '" + invoiceCode_txt.Text + "'";
+
+            OleDbCommand thisCommand = new OleDbCommand(sql3, thisConnection);
+            thisConnection.Open();
+            OleDbDataReader thisReader = thisCommand.ExecuteReader();
+            while (thisReader.Read())
+            {
+                if (thisReader["invoice_code"].ToString().Trim() == invoiceCode_txt.Text.Trim())
+                {
+                    found = true;
+                    invoiceCode = thisReader["invoice_code"].ToString();
+                    invoiceDate = thisReader["invoice_date"].ToString();
+                    studentName = thisReader["invoice_studName"].ToString();
+                    paymentType = thisReader["invoice_type"].ToString();
+                    totalAmount = thisReader["invoice_amountTotal"].ToString();
+                    officeInCharge = thisReader["invoice_oic"].ToString();
+                    break;
+                }
+            }
+            int r = invoiceHistory_table.Rows.Add();
+            if (found == true)
+            {
+                invoiceHistory_table.Rows[r].Cells["h_invoiceCode"].Value = invoiceCode;
+                invoiceHistory_table.Rows[r].Cells["h_invoiceDate"].Value = invoiceDate;
+                invoiceHistory_table.Rows[r].Cells["h_studentName"].Value = studentName;
+                invoiceHistory_table.Rows[r].Cells["h_paymentType"].Value = paymentType;
+                invoiceHistory_table.Rows[r].Cells["h_totalAmount"].Value = totalAmount;
+                invoiceHistory_table.Rows[r].Cells["h_oic"].Value = officeInCharge;
+            }
+            else
+            {
+                MessageBox.Show("Invoice code not found!");
+            }
+
+            thisConnection.Close();
+            thisReader.Close();
+        }
+
+        //checks for duplicate entries
+        public void checkDupeInvoice() {
+            OleDbConnection thisConnection = new OleDbConnection(connectionString);
+            string sql4 = "SELECT * FROM invoice_info_file";
+
+            OleDbCommand thisCommand = new OleDbCommand(sql4, thisConnection);
+            thisConnection.Open();
+
+            OleDbDataAdapter thisAdapter = new OleDbDataAdapter(sql4, thisConnection);
+            OleDbCommandBuilder commandBuilder = new OleDbCommandBuilder(thisAdapter);
+
+            DataSet thisSet = new DataSet();
+            thisAdapter.Fill(thisSet, "invoice_info_file");
+            OleDbDataReader thisReader = thisCommand.ExecuteReader();
+            DataRow thisRow = thisSet.Tables["invoice_info_file"].NewRow();
+            try
+            {
+                thisRow["invoice_code"] = invoiceCode_txt.Text;
+                thisRow["invoice_date"] = invoiceDate_dtp.Value;
+                thisRow["invoice_studName"] = studFN_txt.Text + " " + studLN_txt.Text;
+                thisRow["invoice_type"] = paymentFor_cb.Text;
+                thisRow["invoice_amount"] = invoiceAmount_txt.Text;
+                thisRow["invoice_amountPaid"] = invoiceAmtPaid_txt.Text;
+                thisRow["invoice_amountTotal"] = invoiceTotal_txt.Text;
+                thisRow["invoice_change"] = invoiceChange_txt.Text;
+                thisRow["invoice_oic"] = oic_cb.Text;
+                thisSet.Tables["invoice_info_file"].Rows.Add(thisRow);
+                thisAdapter.Update(thisSet, "invoice_info_file");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Duplicate Entries!" + "\n" + ex);
+            }
+
+            thisConnection.Close();
+        }
+
+        private void save_btn_Click(object sender, EventArgs e)
+        {
+            storeStudentInfo();
+            storeInvoiceInfo();
+            displayTable();
+            
         }
 
         //previews receipt after entering information
@@ -239,6 +333,7 @@ namespace psits_pos
         private void clear_btn_Click(object sender, EventArgs e)
         {
             //clear student info
+            studIdNum_txt.Clear();
             studFN_txt.Clear();
             studLN_txt.Clear();
             studCourse_cb.SelectedIndex = -1;
@@ -246,6 +341,7 @@ namespace psits_pos
             officer_check.Checked = false;
 
             //invoice info clear
+            invoiceCode_txt.Clear();
             paymentFor_cb.SelectedIndex = -1;
             invoiceAmount_txt.Clear();
             invoiceAmtPaid_txt.Clear();
@@ -275,21 +371,6 @@ namespace psits_pos
         private void clearAll_btn_Click(object sender, EventArgs e)
         {
             
-        }
-
-        public string generateInvoiceCode() {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            Random random = new Random();
-            StringBuilder invoiceCode = new StringBuilder();
-
-            for (int i = 0; i < chars.Length; i++)
-            {
-                int randomIndex = random.Next(chars.Length);
-                char randomChar = chars[randomIndex];
-                invoiceCode.Append(randomChar);
-            }
-
-            return invoiceCode.ToString();
         }
 
     }
