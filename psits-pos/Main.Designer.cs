@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.studInfo_groupbox = new System.Windows.Forms.GroupBox();
+            this.studIdNum_txt = new System.Windows.Forms.TextBox();
+            this.studIdNum_lbl = new System.Windows.Forms.Label();
             this.officer_check = new System.Windows.Forms.CheckBox();
             this.studYear_cb = new System.Windows.Forms.ComboBox();
             this.studYear_lbl = new System.Windows.Forms.Label();
@@ -68,13 +70,15 @@
             this.clear_btn = new System.Windows.Forms.Button();
             this.exit_btn = new System.Windows.Forms.Button();
             this.invoiceHistory_dgv = new System.Windows.Forms.DataGridView();
+            this.find_btn = new System.Windows.Forms.Button();
+            this.save_btn = new System.Windows.Forms.Button();
+            this.invoiceCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoiceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.officerInCharge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.calculate_btn = new System.Windows.Forms.Button();
             this.studInfo_groupbox.SuspendLayout();
             this.invoiceBox_groupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceHistory_dgv)).BeginInit();
@@ -82,6 +86,8 @@
             // 
             // studInfo_groupbox
             // 
+            this.studInfo_groupbox.Controls.Add(this.studIdNum_txt);
+            this.studInfo_groupbox.Controls.Add(this.studIdNum_lbl);
             this.studInfo_groupbox.Controls.Add(this.officer_check);
             this.studInfo_groupbox.Controls.Add(this.studYear_cb);
             this.studInfo_groupbox.Controls.Add(this.studYear_lbl);
@@ -93,16 +99,33 @@
             this.studInfo_groupbox.Controls.Add(this.studFN_lbl);
             this.studInfo_groupbox.Location = new System.Drawing.Point(12, 19);
             this.studInfo_groupbox.Name = "studInfo_groupbox";
-            this.studInfo_groupbox.Size = new System.Drawing.Size(376, 154);
+            this.studInfo_groupbox.Size = new System.Drawing.Size(376, 185);
             this.studInfo_groupbox.TabIndex = 2;
             this.studInfo_groupbox.TabStop = false;
             this.studInfo_groupbox.Text = "Student Information";
+            // 
+            // studIdNum_txt
+            // 
+            this.studIdNum_txt.Location = new System.Drawing.Point(98, 22);
+            this.studIdNum_txt.Name = "studIdNum_txt";
+            this.studIdNum_txt.Size = new System.Drawing.Size(262, 23);
+            this.studIdNum_txt.TabIndex = 33;
+            // 
+            // studIdNum_lbl
+            // 
+            this.studIdNum_lbl.AutoSize = true;
+            this.studIdNum_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.studIdNum_lbl.Location = new System.Drawing.Point(14, 25);
+            this.studIdNum_lbl.Name = "studIdNum_lbl";
+            this.studIdNum_lbl.Size = new System.Drawing.Size(78, 17);
+            this.studIdNum_lbl.TabIndex = 32;
+            this.studIdNum_lbl.Text = "First Name :";
             // 
             // officer_check
             // 
             this.officer_check.AutoSize = true;
             this.officer_check.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.officer_check.Location = new System.Drawing.Point(255, 85);
+            this.officer_check.Location = new System.Drawing.Point(254, 116);
             this.officer_check.Name = "officer_check";
             this.officer_check.Size = new System.Drawing.Size(74, 24);
             this.officer_check.TabIndex = 31;
@@ -116,7 +139,7 @@
             "BSIT",
             "BSIS",
             "ACT"});
-            this.studYear_cb.Location = new System.Drawing.Point(99, 116);
+            this.studYear_cb.Location = new System.Drawing.Point(98, 147);
             this.studYear_cb.Name = "studYear_cb";
             this.studYear_cb.Size = new System.Drawing.Size(143, 23);
             this.studYear_cb.TabIndex = 9;
@@ -125,7 +148,7 @@
             // 
             this.studYear_lbl.AutoSize = true;
             this.studYear_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.studYear_lbl.Location = new System.Drawing.Point(53, 118);
+            this.studYear_lbl.Location = new System.Drawing.Point(52, 149);
             this.studYear_lbl.Name = "studYear_lbl";
             this.studYear_lbl.Size = new System.Drawing.Size(40, 17);
             this.studYear_lbl.TabIndex = 8;
@@ -138,7 +161,7 @@
             "BSIT",
             "BSIS",
             "ACT"});
-            this.studCourse_cb.Location = new System.Drawing.Point(99, 85);
+            this.studCourse_cb.Location = new System.Drawing.Point(98, 116);
             this.studCourse_cb.Name = "studCourse_cb";
             this.studCourse_cb.Size = new System.Drawing.Size(143, 23);
             this.studCourse_cb.TabIndex = 7;
@@ -147,7 +170,7 @@
             // 
             this.studCourse_lbl.AutoSize = true;
             this.studCourse_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.studCourse_lbl.Location = new System.Drawing.Point(37, 88);
+            this.studCourse_lbl.Location = new System.Drawing.Point(36, 119);
             this.studCourse_lbl.Name = "studCourse_lbl";
             this.studCourse_lbl.Size = new System.Drawing.Size(56, 17);
             this.studCourse_lbl.TabIndex = 6;
@@ -155,7 +178,7 @@
             // 
             // studLN_txt
             // 
-            this.studLN_txt.Location = new System.Drawing.Point(99, 53);
+            this.studLN_txt.Location = new System.Drawing.Point(98, 84);
             this.studLN_txt.Name = "studLN_txt";
             this.studLN_txt.Size = new System.Drawing.Size(262, 23);
             this.studLN_txt.TabIndex = 5;
@@ -164,7 +187,7 @@
             // 
             this.studLN_lbl.AutoSize = true;
             this.studLN_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.studLN_lbl.Location = new System.Drawing.Point(15, 56);
+            this.studLN_lbl.Location = new System.Drawing.Point(14, 87);
             this.studLN_lbl.Name = "studLN_lbl";
             this.studLN_lbl.Size = new System.Drawing.Size(77, 17);
             this.studLN_lbl.TabIndex = 4;
@@ -172,7 +195,7 @@
             // 
             // studFN_txt
             // 
-            this.studFN_txt.Location = new System.Drawing.Point(99, 22);
+            this.studFN_txt.Location = new System.Drawing.Point(98, 53);
             this.studFN_txt.Name = "studFN_txt";
             this.studFN_txt.Size = new System.Drawing.Size(262, 23);
             this.studFN_txt.TabIndex = 3;
@@ -181,7 +204,7 @@
             // 
             this.studFN_lbl.AutoSize = true;
             this.studFN_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.studFN_lbl.Location = new System.Drawing.Point(15, 25);
+            this.studFN_lbl.Location = new System.Drawing.Point(14, 56);
             this.studFN_lbl.Name = "studFN_lbl";
             this.studFN_lbl.Size = new System.Drawing.Size(78, 17);
             this.studFN_lbl.TabIndex = 2;
@@ -209,7 +232,7 @@
             this.invoiceBox_groupbox.Controls.Add(this.invoiceAmount_txt);
             this.invoiceBox_groupbox.Controls.Add(this.paymentFor_cb);
             this.invoiceBox_groupbox.Controls.Add(this.paymentType_lbl);
-            this.invoiceBox_groupbox.Location = new System.Drawing.Point(12, 187);
+            this.invoiceBox_groupbox.Location = new System.Drawing.Point(12, 214);
             this.invoiceBox_groupbox.Name = "invoiceBox_groupbox";
             this.invoiceBox_groupbox.Size = new System.Drawing.Size(378, 311);
             this.invoiceBox_groupbox.TabIndex = 3;
@@ -372,6 +395,7 @@
             this.invoiceAmtPaid_txt.Name = "invoiceAmtPaid_txt";
             this.invoiceAmtPaid_txt.Size = new System.Drawing.Size(141, 23);
             this.invoiceAmtPaid_txt.TabIndex = 15;
+            this.invoiceAmtPaid_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.invoiceAmtPaid_txt_KeyPress);
             // 
             // invoiceAmtPaid_lbl
             // 
@@ -438,9 +462,9 @@
             // 
             // preview_btn
             // 
-            this.preview_btn.Location = new System.Drawing.Point(144, 551);
+            this.preview_btn.Location = new System.Drawing.Point(267, 577);
             this.preview_btn.Name = "preview_btn";
-            this.preview_btn.Size = new System.Drawing.Size(239, 32);
+            this.preview_btn.Size = new System.Drawing.Size(116, 32);
             this.preview_btn.TabIndex = 6;
             this.preview_btn.Text = "PREVIEW PRINT";
             this.preview_btn.UseVisualStyleBackColor = true;
@@ -450,7 +474,7 @@
             // 
             this.oic_lbl.AutoSize = true;
             this.oic_lbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.oic_lbl.Location = new System.Drawing.Point(22, 511);
+            this.oic_lbl.Location = new System.Drawing.Point(22, 538);
             this.oic_lbl.Name = "oic_lbl";
             this.oic_lbl.Size = new System.Drawing.Size(116, 17);
             this.oic_lbl.TabIndex = 7;
@@ -473,14 +497,14 @@
             "Alexis Joseph Tan",
             "Daniel Stephen Alvarez",
             "Ysabel Marie Colina"});
-            this.oic_cb.Location = new System.Drawing.Point(144, 508);
+            this.oic_cb.Location = new System.Drawing.Point(144, 535);
             this.oic_cb.Name = "oic_cb";
             this.oic_cb.Size = new System.Drawing.Size(239, 23);
             this.oic_cb.TabIndex = 24;
             // 
             // clearAll_btn
             // 
-            this.clearAll_btn.Location = new System.Drawing.Point(144, 592);
+            this.clearAll_btn.Location = new System.Drawing.Point(144, 618);
             this.clearAll_btn.Name = "clearAll_btn";
             this.clearAll_btn.Size = new System.Drawing.Size(116, 32);
             this.clearAll_btn.TabIndex = 26;
@@ -490,7 +514,7 @@
             // 
             // clear_btn
             // 
-            this.clear_btn.Location = new System.Drawing.Point(22, 592);
+            this.clear_btn.Location = new System.Drawing.Point(22, 618);
             this.clear_btn.Name = "clear_btn";
             this.clear_btn.Size = new System.Drawing.Size(116, 32);
             this.clear_btn.TabIndex = 27;
@@ -500,7 +524,7 @@
             // 
             // exit_btn
             // 
-            this.exit_btn.Location = new System.Drawing.Point(267, 592);
+            this.exit_btn.Location = new System.Drawing.Point(267, 618);
             this.exit_btn.Name = "exit_btn";
             this.exit_btn.Size = new System.Drawing.Size(116, 32);
             this.exit_btn.TabIndex = 28;
@@ -512,6 +536,7 @@
             // 
             this.invoiceHistory_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invoiceHistory_dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.invoiceCode,
             this.invoiceDate,
             this.lastName,
             this.firstName,
@@ -520,9 +545,36 @@
             this.officerInCharge});
             this.invoiceHistory_dgv.Location = new System.Drawing.Point(401, 61);
             this.invoiceHistory_dgv.Name = "invoiceHistory_dgv";
+            this.invoiceHistory_dgv.ReadOnly = true;
             this.invoiceHistory_dgv.RowTemplate.Height = 25;
-            this.invoiceHistory_dgv.Size = new System.Drawing.Size(647, 563);
+            this.invoiceHistory_dgv.Size = new System.Drawing.Size(647, 589);
             this.invoiceHistory_dgv.TabIndex = 29;
+            // 
+            // find_btn
+            // 
+            this.find_btn.Location = new System.Drawing.Point(144, 577);
+            this.find_btn.Name = "find_btn";
+            this.find_btn.Size = new System.Drawing.Size(116, 32);
+            this.find_btn.TabIndex = 31;
+            this.find_btn.Text = "FIND INVOICE";
+            this.find_btn.UseVisualStyleBackColor = true;
+            this.find_btn.Click += new System.EventHandler(this.find_btn_Click);
+            // 
+            // save_btn
+            // 
+            this.save_btn.Location = new System.Drawing.Point(22, 577);
+            this.save_btn.Name = "save_btn";
+            this.save_btn.Size = new System.Drawing.Size(116, 32);
+            this.save_btn.TabIndex = 32;
+            this.save_btn.Text = "SAVE INVOICE";
+            this.save_btn.UseVisualStyleBackColor = true;
+            this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
+            // 
+            // invoiceCode
+            // 
+            this.invoiceCode.HeaderText = "Code";
+            this.invoiceCode.Name = "invoiceCode";
+            this.invoiceCode.ReadOnly = true;
             // 
             // invoiceDate
             // 
@@ -560,22 +612,13 @@
             this.officerInCharge.Name = "officerInCharge";
             this.officerInCharge.ReadOnly = true;
             // 
-            // calculate_btn
-            // 
-            this.calculate_btn.Location = new System.Drawing.Point(22, 551);
-            this.calculate_btn.Name = "calculate_btn";
-            this.calculate_btn.Size = new System.Drawing.Size(116, 32);
-            this.calculate_btn.TabIndex = 30;
-            this.calculate_btn.Text = "CALCULATE";
-            this.calculate_btn.UseVisualStyleBackColor = true;
-            this.calculate_btn.Click += new System.EventHandler(this.calculate_btn_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 641);
-            this.Controls.Add(this.calculate_btn);
+            this.ClientSize = new System.Drawing.Size(1064, 674);
+            this.Controls.Add(this.save_btn);
+            this.Controls.Add(this.find_btn);
             this.Controls.Add(this.invoiceHistory_dgv);
             this.Controls.Add(this.exit_btn);
             this.Controls.Add(this.clear_btn);
@@ -632,7 +675,6 @@
         private Button exit_btn;
         private DataGridView invoiceHistory_dgv;
         private Label invoiceAmount_lbl;
-        private Button calculate_btn;
         private CheckBox polo_check;
         private CheckBox lanyard_check;
         private CheckBox totebag2_check;
@@ -641,6 +683,11 @@
         private CheckBox hoodieBlack_check;
         private CheckBox shirt_check;
         private CheckBox officer_check;
+        private TextBox studIdNum_txt;
+        private Label studIdNum_lbl;
+        private Button find_btn;
+        private Button save_btn;
+        private DataGridViewTextBoxColumn invoiceCode;
         private DataGridViewTextBoxColumn invoiceDate;
         private DataGridViewTextBoxColumn lastName;
         private DataGridViewTextBoxColumn firstName;
